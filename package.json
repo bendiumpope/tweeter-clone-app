@@ -2,9 +2,12 @@
   "name": "tweet-clone",
   "version": "0.0.0",
   "private": true,
+  "engines": {
+    "node": "14.17.3"
+  },
   "scripts": {
     "start": "node ./bin/www",
-    "postinstall": "tsc && npx prisma migrate deploy",
+    "postinstall": "tsc",
     "dev": "nodemon ./bin/www",
     "compile": "tsc -w",
     "migrate": "npx prisma migrate dev --name init"
