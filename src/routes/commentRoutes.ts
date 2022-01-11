@@ -21,7 +21,7 @@ const router = express.Router();
 router.route("/").get(protect(), getComments);
 
 router
-  .route("/:postId")
+  .route("/:postId/posts")
   .post(protect(), validate(createCommentValidator), createComment);
 
 router
