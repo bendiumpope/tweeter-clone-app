@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "postinstall": "tsc && npx prisma migrate deploy --name init",
+    "postinstall": "tsc && npx prisma migrate deploy",
     "dev": "nodemon ./bin/www",
     "compile": "tsc -w",
     "migrate": "npx prisma migrate dev --name init"
