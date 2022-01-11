@@ -4,10 +4,15 @@ import userRoute from "./userRoutes";
 import postRoute from "./postRoutes";
 import commentRoute from "./commentRoutes";
 import likeRoute from "./likeRoutes";
+import baseRoute from "./baseRoutes";
 
 const router = express.Router();
 
 const defaultRoutes = [
+  {
+    path: "/",
+    route: baseRoute,
+  },
   {
     path: "/auth",
     route: authRoute,
