@@ -13,8 +13,8 @@ router
   .get(protect(), validate(getLikesValidator), getLikes)
   .delete(protect(), validate(deleteLikeValidator), deleteLike);
 
-router
-  .route("/post/:postId")
-  .get(protect(), validate(getLikeByPostValidator), getLikeByPostId)
+// router
+//   .route("/post/:postId")
+//   .get(protect(), validate(getLikeByPostValidator), getLikeByPostId)
 
 export default router;
