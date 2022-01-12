@@ -12,6 +12,9 @@ const fromEmail = process.env.SENDGRID_EMAIL;
 
 sgMail.setApiKey(SendGrid_key);
 
+console.log(forMailUser," ................... ",
+" ................... ", forMailPass)
+
 export const transport = nodemailer.createTransport({
   service: "gmail",
   auth: {
