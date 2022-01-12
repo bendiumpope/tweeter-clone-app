@@ -75,7 +75,7 @@ export const sendEmail = async (msg: any) => {
   try {
     // await sgMail.send(msg);
     await transport.sendMail(msg);
-    console.log("...... ", msg, " ........");
+
   } catch (error: any) {
     console.error(error);
     if (error.response) {
@@ -102,8 +102,7 @@ If you did not request any password resets, then ignore this email.`;
     to: to,
     from: forMailUser, // Use the email address or domain you verified above
     subject: subject,
-    text: text,
-    html: "<a href='${URL}/auth/reset-password?token=${token}'>and easy to do anywhere, even with Node.js</a>",
+    text: text
   };
   await sendEmail(msg);
 };
@@ -125,8 +124,7 @@ If you did not create an account, then ignore this email.`;
     to: to,
     from: forMailUser, // Use the email address or domain you verified above
     subject: subject,
-    text: text,
-    html: "<a href=`${URL}/auth/verify-email?token=${token}`>and easy to do anywhere, even with Node.js</a>",
+    text: text
   };
 
   await sendEmail(msg);
