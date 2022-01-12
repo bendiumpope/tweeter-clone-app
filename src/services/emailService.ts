@@ -10,28 +10,28 @@ const URL = process.env.URL;
 const SendGrid_key: any = process.env.SENDGRID_API_KEY;
 const fromEmail = process.env.SENDGRID_EMAIL;
 
-sgMail.setApiKey(SendGrid_key);
+// sgMail.setApiKey(SendGrid_key);
 
-// export const transport = nodemailer.createTransport({
-//   service: "gmail",
-//   auth: {
-//     user: forMailUser,
-//     pass: forMailPass,
-//   },
-//   tls: {
-//     rejectUnauthorized: false,
-//   },
-// });
+export const transport = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: forMailUser,
+    pass: forMailPass,
+  },
+  tls: {
+    rejectUnauthorized: false,
+  },
+});
 // /* istanbul ignore next */
 
-// transport
-//   .verify()
-//   .then(() => console.log("Connected to email server"))
-//   .catch(() =>
-//     console.log(
-//       "Unable to connect to email server. Make sure you have configured the SMTP options in .env"
-//     )
-//   );
+transport
+  .verify()
+  .then(() => console.log("Connected to email server"))
+  .catch(() =>
+    console.log(
+      "Unable to connect to email server. Make sure you have configured the SMTP options in .env"
+    )
+  );
 
 // const msg = {
 //   to: "test@example.com",
@@ -73,7 +73,8 @@ sgMail.setApiKey(SendGrid_key);
  */
 export const sendEmail = async (msg: any) => {
   try {
-    await sgMail.send(msg);
+    // await sgMail.send(msg);
+    await transport.sendMail(msg);
     console.log("...... ", msg, " ........");
     console.log("....... mail sent successfully ........");
   } catch (error: any) {
@@ -105,10 +106,7 @@ If you did not request any password resets, then ignore this email.`;
     text: text,
     html: "<a href='${URL}/auth/reset-password?token=${token}'>and easy to do anywhere, even with Node.js</a>",
   };
-  // await sendEmail(msg);
-  await sgMail.send(msg);
-  console.log("...... ", msg, " ........");
-  console.log("....... mail sent successfully ........");
+  await sendEmail(msg);
 };
 
 /**
@@ -132,8 +130,5 @@ If you did not create an account, then ignore this email.`;
     html: "<a href=`${URL}/auth/verify-email?token=${token}`>and easy to do anywhere, even with Node.js</a>",
   };
 
-  // await sendEmail(msg);
-  await sgMail.send(msg);
-  console.log("...... ", msg, " ........");
-  console.log("....... mail sent successfully ........");
+  await sendEmail(msg);
 };
