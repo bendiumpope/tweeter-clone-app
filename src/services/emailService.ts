@@ -13,26 +13,26 @@ const fromEmail = process.env.SENDGRID_EMAIL;
 
 sgMail.setApiKey(SendGrid_key);
 
-export const transport = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: forMailUser,
-    pass: forMailPass,
-  },
-  tls: {
-    rejectUnauthorized: false,
-  },
-});
+// export const transport = nodemailer.createTransport({
+//   service: "gmail",
+//   auth: {
+//     user: forMailUser,
+//     pass: forMailPass,
+//   },
+//   tls: {
+//     rejectUnauthorized: false,
+//   },
+// });
 // /* istanbul ignore next */
 
-transport
-  .verify()
-  .then(() => console.log("Connected to email server"))
-  .catch(() =>
-    console.log(
-      "Unable to connect to email server. Make sure you have configured the SMTP options in .env"
-    )
-  );
+// transport
+//   .verify()
+//   .then(() => console.log("Connected to email server"))
+//   .catch(() =>
+//     console.log(
+//       "Unable to connect to email server. Make sure you have configured the SMTP options in .env"
+//     )
+//   );
 
 // const msg = {
 //   to: "test@example.com",
@@ -74,8 +74,8 @@ transport
  */
 export const sendEmail = async (msg: any) => {
   try {
-    // await sgMail.send(msg);
-    await transport.sendMail(msg);
+    await sgMail.send(msg);
+    // await transport.sendMail(msg);
 
   } catch (error: any) {
     throw new AppError(error, 500);
