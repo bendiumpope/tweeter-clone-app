@@ -24,14 +24,14 @@ export const transport = nodemailer.createTransport({
 });
 // /* istanbul ignore next */
 
-transport
-  .verify()
-  .then(() => console.log("Connected to email server"))
-  .catch(() =>
-    console.log(
-      "Unable to connect to email server. Make sure you have configured the SMTP options in .env"
-    )
-  );
+// transport
+//   .verify()
+//   .then(() => console.log("Connected to email server"))
+//   .catch(() =>
+//     console.log(
+//       "Unable to connect to email server. Make sure you have configured the SMTP options in .env"
+//     )
+//   );
 
 // const msg = {
 //   to: "test@example.com",
