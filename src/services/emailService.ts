@@ -1,6 +1,7 @@
 import nodemailer from "nodemailer";
 import dotevn from "dotenv";
 import sgMail from "@sendgrid/mail";
+import AppError from "../utils/http-error";
 
 dotevn.config();
 
@@ -77,10 +78,7 @@ export const sendEmail = async (msg: any) => {
     await transport.sendMail(msg);
 
   } catch (error: any) {
-    console.error(error);
-    if (error.response) {
-      console.error(error.response.body);
-    }
+    throw new AppError(error, 500);
   }
 };
 
