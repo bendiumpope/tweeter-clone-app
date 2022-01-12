@@ -74,6 +74,7 @@ sgMail.setApiKey(SendGrid_key);
 export const sendEmail = async (msg: any) => {
   try { 
     await sgMail.send(msg);
+    console.log("....... mail sent successfully ........")
   } catch (error: any) {
     console.error(error);
     if (error.response) {
