@@ -42,7 +42,7 @@ const sendEmail = async (reciever: string, subject: string, text: string) => {
  * @returns {Promise}
  */
 export const sendResetPasswordEmail = async (to: any, token: any) => {
-  const subject = "Reset password";
+  const subject = "Twitter Clone Reset password";
   // replace this url with the link to the reset password page of your front-end app
   const resetPasswordUrl = `${URL}/auth/reset-password?token=${token}`;
   const text = `Dear user,
@@ -59,7 +59,7 @@ If you did not request any password resets, then ignore this email.`;
  * @returns {Promise}
  */
 export const sendVerificationEmailUser = async (to: any, token: any) => {
-  const subject = "Email Verification";
+  const subject = "Twitter Clone Email Verification";
   // replace this url with the link to the email verification page of your front-end app
   const verificationEmailUrl = `${URL}/auth/verify-email?token=${token}`;
   const text = `Dear user,
