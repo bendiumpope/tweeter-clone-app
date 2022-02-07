@@ -40,6 +40,10 @@ export const registerUser = async (userBody: any) => {
   }
   const password = await bcrypt.hash(userBody.password, 8);
   const confrimPassword = await bcrypt.hash(userBody.confirmPassword, 8);
+
+  console.log("password : ", password);
+  console.log("confrimPassword : ", confrimPassword);
+
   if (password !== confrimPassword) {
     throw new AppError("Password and confirmPassword do not match", 401);
   }
